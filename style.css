@@ -1,6 +1,6 @@
 body {
-    background-color: #000000; /* Чистый черный */
-    color: #ffffff; /* Белый цвет текста для контраста */
+    background-color: #000000; /* фон */
+    color: #ffffff; /*цвет текста*/
     margin: 0; /* Убираем лишние отступы по краям */
     padding: 0;
     
@@ -12,6 +12,7 @@ body {
     /* 3. Высота. Чтобы картинка была по центру ЭКРАНА, а не только верха, 
        мы задаем телу сайта высоту — 100% высоты видимого окна (View Height) */
     min-height: 100vh;
+    padding-top: 80px;
 }
 
 /* 4. Простые настройки для контейнера логотипа */
@@ -32,7 +33,7 @@ body {
     
     /* Эти три строчки ставят элементы в ряд и расталкивают */
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between; /*Расставить максимально далеко друг от друга лево центр право*/
     align-items: center;
     box-sizing: border-box; /* Чтобы шапка не вылезала за края экрана */
 }
@@ -41,4 +42,126 @@ body {
 .header-center img {
     height: 170px; /* Картинка будет аккуратной */
     width: auto;
+}
+
+.header-left {
+    margin-left: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.search-icon {
+    margin-right: 10px; /* Отступ от лупы до слова "Пошук..." */
+    display: flex;
+    align-items: center;
+    flex-shrink: 0; /* Никогда не сжимай эту коробку*/
+}
+
+.search-icon img {
+    width: 30px;  /* Размер твоей лупы */
+    height: 25px;
+    display: block;
+}
+
+.search-wrapper {
+    display: flex;
+    align-items: center;
+    background-color: #666565; /* Цвет фона для поисковой строки */
+    border: 3px solid #e602e6; /* Цвет рамки */
+    border-radius: 40px; /* Скругление углов для поисковой строки */
+    padding: 7px 15px; /* Внутренние отступы для поисковой строки */
+    width: 220px;
+}
+
+
+.search-field {
+    border: none;
+    background: transparent; /* ДЕЛАЕМ инпут прозрачным, чтобы был виден фон овала */
+    outline: none; /* Убираем рамку при фокусе */
+    
+    width: 130px;
+    height: 40px;
+    font-size: 14px;
+    color: #d664ec;
+}
+
+.search-field::placeholder {
+    color: #d6d6d6; /* цвет пошуку */
+}
+
+/* 1. Чтобы иконки стояли красиво в ряд с пробелом между ними */
+.nav-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Расстояние между иконками */
+    background-color: #666565;
+    border: 3px solid #6705e6;
+    border-radius: 40px;
+    padding: 7px 15px;
+}
+
+/* 2. Задаем размер картинкам внутри иконок */
+.nav-item img {
+    width: 25px;  /* Размер иконок */
+    height: 25px;
+    display: block;
+    flex-shrink: 0; /* Чтобы не сплющило, если овал станет тесным */
+}
+
+/* 3. Если вставил SVG кодом, меняем им цвет и размер тут */
+.nav-item svg {
+    width: 25px;
+    height: 25px;
+    display: block;
+    color: #d1d1cd; /* Цвет иконки (если это SVG) */    
+}
+
+/* 1. РАСПРЕДЕЛЕНИЕ: Слева, Центр, Справа (Чтобы логотип вернулся в центр) */
+.header-left, .header-center, .header-right {
+    flex: 1; /* Делит шапку на 3 равных куска */
+    display: flex;
+    align-items: center;
+}
+
+.header-center { justify-content: center; } /* Лого строго в центре */
+.header-right { justify-content: flex-end; } /* Иконки профиля прижаты вправо */
+
+/* 2. ПОИСКОВАЯ КАПСУЛА */
+.search-wrapper {
+    display: flex;
+    align-items: center;
+    background-color: #666565; /* Твой серый фон */
+    border: 3px solid #ff00ea; /* Розовая рамка */
+    border-radius: 40px;
+    padding: 5px 15px;
+    width: 220px; /* Фиксируем длину поиска */
+    height: 40px;
+    margin-left: 20px;
+}
+
+/* 3. УМЕНЬШАЕМ ИКОНКУ */
+.search-icon-svg {
+    width: 25px !important;  /* Насильно ставим размер */
+    height: 25px !important;
+    margin-right: 10px;
+    flex-shrink: 0;          /* Не даем ей сжиматься */
+}
+
+/* 4. ЧИНИМ ЦВЕТ И УБИРАЕМ ЗАЛИВКУ (Чтобы не было черного пятна) */
+.cls-1 {
+    fill: none !important;       /* ВАЖНО: Никакой черной заливки! */
+    stroke: #b4b4b4 !important;  /* Цвет линий (салатовый или белый) */
+    stroke-width: 1.5px;         /* Толщина линий */
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+/* Стили для поля ввода */
+.search-field {
+    border: none;
+    background: transparent;
+    outline: none;
+    width: 100%;
+    color: rgb(255, 255, 255);
+    font-size: 16px;
 }
