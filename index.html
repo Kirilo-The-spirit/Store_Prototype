@@ -16,8 +16,8 @@
             <line class="cls-1" x1="16.77" y1="14.84" x2="13.88" y2="11.95"/>
             <path class="cls-1" d="M1.5,5.3v9.54a3.82,3.82,0,0,0,3.82,3.82H7.23v2.86L13,18.66h5.73a3.82,3.82,0,0,0,3.82-3.82V5.3a3.82,3.82,0,0,0-3.82-3.82H5.32A3.82,3.82,0,0,0,1.5,5.3Z"/>
         </svg>
-        <input type="text" placeholder="Пошук..." class="search-field">
-    </div>
+        <input type="text" id="searchInput" placeholder="Пошук..." class="search-field">   
+     </div>
 </div>
         
         <div class="header-center">
@@ -46,20 +46,84 @@
     </div>
 </div>
 </header>
-    
-    <div class="logo-container">
-        
-        
-        <h1>КМогазин Часу</h1>
-        
-        <p>Процесс до відкриття!</p>
-        <h2>Залишилось: <span id="countdown">999:66:69</span></h2>
+
+    <main class="main-container">
+    <div class="timer-section">
+        <h1 class="main-timer">Залишилось: <span id="countdown">30 Днів 08:41:39</span></h1>
     </div>
 
+    <section class="top-section">
+    
+    <aside class="filters-block">
+    <div class="filter-group">
+        <h4>Ціна, грн</h4>
+        <div class="filter-inputs">
+            <input type="number" id="priceFrom" placeholder="від">
+            <input type="number" id="priceTo" placeholder="до">
+        </div>
+    </div>
+    
+    <div class="filter-group">
+        <h4>Час</h4>
+        <div class="filter-inputs">
+            <input type="number" id="timeFrom" placeholder="від">
+            <input type="number" id="timeTo" placeholder="до">
+        </div>
+        <input type="range" class="time-range">
+    </div>
+</aside>
 
+    <div class="promo-banner">
+        <div class="banner-content">
+            <h2>Рекламний баннер</h2>
+        </div>
+    </div>
+
+</section>
+
+    <h2 class="catalog-title">Каталог</h2>
+    <section class="product-grid"id="productGrid"></section>
+</main>
+    
+    <div class="logo-container">
+        <!-- <h1>Залишилось: <span id="countdown">111:66:11</span></h1> -->
+
+    </div>
+
+<footer class="main-footer">
+    <div class="footer-container">
+        <div class="footer-col">
+            <h4>Про розробника</h4>
+            <ul>
+                <li><a href="https://t.me/Pacanchuk_is_doma">Мій телеграм</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-col">
+            <h4>Допомога</h4>
+            <ul>
+                <li><a href="#">Питання та відповіді</a></li>
+                <li><a href="#">Гарантія</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-col">
+            <div class="social-links">
+                <h5>FBI OPE INDI CBY NABY OBY BYBY</h5>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <p>&copy; 2026 Time Store. Всі права можливо захищені.</p>
+        <div class="payment-methods">
+            <span>Visa / MasterFlomaster</span>
+        </div>
+    </div>
+</footer>
 
     
-    <div style="height: 2000px;"></div>
+    <!-- <div style="height: 2000px;"></div> -->
 <script src="logic.js"></script>
 <!-- Можна додати анімацію або таймер для відліку часу до відкриття -->
 
