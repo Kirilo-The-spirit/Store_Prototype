@@ -35,7 +35,7 @@
             </svg>
         </div>
 
-        <div class="nav-item">
+        <div class="nav-item" id="settingsBtn" style="cursor: pointer;">
             <svg viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg" class="icon-svg">
                 <g transform="matrix(0.95,0,0,0.95,14,12)">
                     <path style="fill:currentColor; stroke-linecap:round" d="M 447.7 -12.7 A 42 42 0 0 0 405.6 29.2 L 405.6 50.3 L 27.4 50.3 A 42 42 0 0 0 -14.6 92.3 A 42 42 0 0 0 27.4 134.3 L 405.6 134.3 L 405.6 155.4 A 42 42 0 0 0 447.7 197.4 A 42 42 0 0 0 489.7 155.4 L 489.7 134.3 L 573.7 134.3 A 42 42 0 0 0 615.8 92.3 A 42 42 0 0 0 573.7 50.3 L 489.7 50.3 L 489.7 29.2 A 42 42 0 0 0 447.7 -12.7 z M 143 197.4 A 42 42 0 0 0 100.9 239.5 L 100.9 260.5 L 27.4 260.5 A 42 42 0 0 0 -14.5 302.6 A 42 42 0 0 0 27.4 344.6 L 100.9 344.6 L 100.9 365.7 A 42 42 0 0 0 143 407.7 A 42 42 0 0 0 185 365.7 L 185 344.6 L 573.7 344.6 A 42 42 0 0 0 615.8 302.6 A 42 42 0 0 0 573.7 260.5 L 185 260.5 L 185 239.5 A 42 42 0 0 0 143 197.4 z M 279.5 407.7 A 42 42 0 0 0 237.5 449.8 L 237.5 470.8 L 27.4 470.8 A 42 42 0 0 0 -14.5 512.8 A 42 42 0 0 0 27.4 554.9 L 237.5 554.9 L 237.5 575.9 A 42 42 0 0 0 279.5 618 A 42 42 0 0 0 321.6 575.9 L 321.6 554.9 L 573.7 554.9 A 42 42 0 0 0 615.8 512.8 A 42 42 0 0 0 573.7 470.8 L 321.6 470.8 L 321.6 449.8 A 42 42 0 0 0 279.5 407.7 z " />
@@ -44,6 +44,17 @@
         </div>
 
     </div>
+    <!-- Окошко настроек -->
+<div id="settingsPopup" class="settings-popup">
+    <h4 style="margin-top: 0;">Налаштування</h4>
+    <div style="display: flex; align-items: center; gap: 15px;">
+        <span>Світла тема</span>
+        <label class="theme-switch">
+            <input type="checkbox" id="themeCheckbox">
+            <span class="slider"></span>
+        </label>
+    </div>
+</div>
 </div>
 </header>
 
@@ -69,8 +80,7 @@
             <input type="number" id="timeFrom" placeholder="від">
             <input type="number" id="timeTo" placeholder="до">
         </div>
-        <input type="range" class="time-range">
-    </div>
+<input type="range" id="timeSlider" class="time-range" min="0" max="60" value="60">    </div>
 </aside>
 
     <div class="promo-banner">
@@ -90,7 +100,34 @@
 
     </div>
 
-<footer class="main-footer">
+<section class="feedback-section">
+    <div class="feedback-container">
+        <h2 class="feedback-title">Зворотний зв'язок</h2>
+        <p class="feedback-subtitle">Є питання щодо часу? Напишіть нам!</p>
+
+        <!-- Форма с методом POST -->
+        <form action="/send-feedback" method="POST" class="feedback-form">
+            <div class="form-group">
+                <label for="userName">Ваше ім'я</label>
+                <input type="text" id="userName" name="name" placeholder="Введіть ваше ім'я" required>
+            </div>
+
+            <div class="form-group">
+                <label for="userEmail">Ваш Email</label>
+                <input type="email" id="userEmail" name="email" placeholder="example@mail.com" required>
+            </div>
+
+            <div class="form-group">
+                <label for="message">Повідомлення</label>
+                <textarea id="message" name="message" rows="5" placeholder="Ваше запитання..." required></textarea>
+            </div>
+
+            <button type="submit" class="submit-btn">Відправити</button>
+        </form>
+    </div>
+</section>
+
+    <footer class="main-footer">
     <div class="footer-container">
         <div class="footer-col">
             <h4>Про розробника</h4>

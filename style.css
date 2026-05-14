@@ -1,11 +1,49 @@
+:root {
+    /* Основні кольори */
+    --bg-color: #000000;
+    --card-bg: #1a1a1a;
+    --text-color: #ffffff;
+    --title-color: #ffffff;
+    --header-bg: #111111;
+    --accent: #ff00ea;
+
+    /* ТАЙМЕР (ТЕМНИЙ НЕОН) */
+    --timer-color: #ae00ff;
+    --timer-glow: 0 0 10px #ae00ff, 0 0 15px rgba(174, 0, 255, 0.7);
+
+    /* ФОРМИ ТА ІНПУТИ */
+    --input-bg: #222222;
+    --input-border: #444444;
+    --section-bg: #000000;
+}
+
+body.light-theme {
+    /* Основні кольори СВІТЛОЇ теми */
+    --bg-color: #f0f0f0;
+    --card-bg: #ffffff;
+    --text-color: #333333;
+    --title-color: #000000;
+    --header-bg: #e0e0e0;
+    --accent: #ae00ff;
+
+    /* ТАЙМЕР (ЧОРНИЙ БЕЗ СЯЙВА) */
+    --timer-color: #000000;
+    --timer-glow: none;
+
+    /* ФОРМИ ТА ІНПУТИ */
+    --input-bg: #ffffff;
+    --input-border: #cccccc;
+    --section-bg: #f0f0f0;
+}
+
 body {
     background-color: #000000; /* фон */
     color: #ffffff; /*цвет текста*/
-    margin: 0; /* Убираем лишние отступы по краям */
+    margin: 0; /* отступы по краям */
     padding: 0;
     font-family: sans-serif;
     /* 2. Магия центрирования (Flexbox). */
-    /* display: flex; Говорим, что это Flex-контейнер */
+    /* display: flex; */
     /* justify-content: center; Центрируем по горизонтали */
     /* align-items: flex-start;     Центрируем по вертикали */
     
@@ -189,17 +227,21 @@ body {
     font-size: 16px;
 }
 
+/* ПИШЕМО ЦЕ ПОЗА МЕДІА-ЗАПИТАМИ (щоб працювало всюди) */
 #countdown {
-    font-family: 'Courier New', Courier, monospace; /* Моноширинный шрифт, чтоб цифры не прыгали */
-    color: #ae00ff; /* Твой фирменный салатовый */
-    text-shadow: 0 0 3px #1900ff; /* Эффект свечения */
+    font-family: 'Courier New', Courier, monospace;
+    /* Використовуємо змінні, які ми створили в :root */
+    color: var(--timer-color) !important; 
+    text-shadow: var(--timer-glow) !important;
     font-weight: bold;
     letter-spacing: 2px;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
 }
 
 /* Основной контейнер */
 .main-container {
     padding: 20px;
+    color: var(--text-color);
     max-width: 1200px;
     margin: 0 auto;
 }
@@ -397,10 +439,13 @@ body {
         width: 98%;
     }
 
-    /* 5. Уменьшаем таймер, а то он может не влезать в одну строку */
-    .main-timer {
-        font-size: 20px;
-    }
+/* И для самого заголовка тоже на всякий случай */
+.main-timer {
+    font-size: 20px;
+    color: var(--text-color); /* Чтобы слово "Залишилось" тоже было в теме */
+    text-align: center;
+    margin-top: 10px;
+}
 }
 
 .main-footer {
@@ -484,3 +529,290 @@ body {
     box-shadow: 0 0 10px #ff00ea;
     transform: scale(1.1);
 }
+
+.feedback-section {
+    padding: 60px 20px;
+    background-color: #000;
+    display: flex;
+    justify-content: center;
+}
+
+.feedback-container {
+    width: 100%;
+    max-width: 600px;
+    background: #1a1a1a;
+    padding: 40px;
+    border-radius: 20px;
+    border: 2px solid #ae00ff; /* Фиолетовый неон */
+    box-shadow: 0 0 20px rgba(174, 0, 255, 0.2);
+}
+
+.feedback-title {
+    color: #fff;
+    text-align: center;
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+.feedback-subtitle {
+    color: #ccc;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/* Стили полей ввода */
+.form-group {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.form-group label {
+    color: #cccccc; /* Розовый неон */
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.form-group input, 
+.form-group textarea {
+    background: #222;
+    border: 1px solid #444;
+    border-radius: 10px;
+    padding: 12px;
+    color: #fff;
+    outline: none;
+    transition: 0.3s;
+}
+
+.form-group input:focus, 
+.form-group textarea:focus {
+    border-color: #ff00ea;
+    box-shadow: 0 0 10px rgba(255, 0, 234, 0.3);
+}
+
+/* Кнопка отправки */
+.submit-btn {
+    width: 100%;
+    padding: 15px;
+    background: transparent;
+    color: #fff;
+    border: 2px solid #ff00ea;
+    border-radius: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+    text-transform: uppercase;
+}
+
+.submit-btn:hover {
+    background: #ff00ea;
+    box-shadow: 0 0 20px #ff00ea;
+    color: #000;
+}
+
+.promo-banner {
+    background-color: var(--card-bg); /* Делаем его цвета карточек */
+    color: var(--title-color); /* Текст будет меняться черный/белый */
+    /* ... остальные твои стили для баннера */
+}
+
+.search-wrapper {
+    background-color: var(--card-bg); /* Пусть фон поиска совпадает с карточками */
+    /* остальные стили оставляем */
+}
+
+.search-field {
+    background-color: transparent; /* Инпут должен быть прозрачным, чтобы был виден фон враппера */
+    color: var(--text-color);
+}
+/* Заголовок "Каталог" */
+.catalog-title {
+    color: var(--title-color);
+}
+
+/* Назва товару в картці */
+.product-title {
+    color: var(--text-color);
+}
+
+/* Ціна товару */
+.product-price {
+    color: var(--text-color);
+}
+
+/* Текст всередині фільтрів */
+.filter-group h4 {
+    color: var(--title-color);
+}
+
+/* Текст у футері */
+.footer-col h4, .footer-col ul li a {
+    color: var(--text-color);
+}
+
+/* Применяем ко всему */
+body { background-color: var(--bg-color); color: var(--text-color); }
+.top-header { background-color: var(--header-bg); border-bottom: 1px solid var(--accent); }
+.main-footer { background-color: var(--header-bg); border-top: 2px solid var(--accent); }
+.product-card, .filters-block, .feedback-container { background-color: var(--card-bg); }
+
+.feedback-section {
+    padding: 60px 20px;
+    background-color: var(--section-bg); /* ТЕПЕРЬ МЕНЯЕТСЯ С ТЕМОЙ */
+    display: flex;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+}
+
+/* Применяем ко ВСЕМ полям ввода на сайте */
+input[type="text"],
+input[type="number"],
+input[type="email"],
+textarea {
+    background-color: var(--input-bg);
+    border: 1px solid var(--input-border);
+    color: var(--text-color);
+    transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+}
+
+/* Жестко привязываем цвета к переменным для полей формы */
+.form-group input, 
+.form-group textarea {
+    background-color: var(--input-bg) !important;
+    border: 1px solid var(--input-border) !important;
+    color: var(--text-color) !important;
+    border-radius: 10px;
+    padding: 12px;
+    outline: none;
+}
+
+/* Возвращаем видимость тексту внутри полей (placeholders) */
+input::placeholder,
+textarea::placeholder {
+    color: #888; /* Универсальный серый для подсказок */
+}
+
+/* Заголовок и подзаголовок формы */
+.feedback-title, .feedback-subtitle {
+    color: var(--title-color);
+}
+
+/* Лейблы над инпутами (Ваше имя, Email) */
+.form-group label {
+    color: var(--title-color);
+}
+
+/* Кнопка ВІДПРАВИТИ */
+.submit-btn {
+    width: 100%;
+    padding: 15px;
+    background: transparent;
+    color: var(--title-color); /* ТЕПЕРЬ ТЕКСТ ВИДНО ВСЕГДА */
+    border: 2px solid var(--accent);
+    border-radius: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+    text-transform: uppercase;
+}
+
+.submit-btn:hover {
+    background: var(--accent);
+    color: #ffffff; /* При наведении текст всегда белый */
+}
+
+/* Стили для маленького окошка настроек */
+.settings-popup {
+    display: none;
+    position: absolute;
+    /* 100% означає, що воно вискочить рівно під нижнім краєм шапки */
+    top: 100%; 
+    right: 20px;
+    background-color: var(--card-bg);
+    color: var(--text-color);
+    border: 2px solid var(--accent);
+    padding: 20px;
+    border-radius: 15px;
+    z-index: 10001;
+    min-width: 200px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.settings-popup.active {
+    display: block;
+}
+
+.theme-switch input { opacity: 0; width: 0; height: 0; }
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: #444;
+    transition: .4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 16px; width: 16px;
+    left: 4px; bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider { background-color: var(--accent); }
+input:checked + .slider:before { transform: translateX(26px); }
+
+
+
+/* Стиль для переключателя (чтобы не был просто кнопкой) */
+.theme-switch {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 20px;
+}
+.theme-switch input { opacity: 0; width: 0; height: 0; }
+.slider {
+    position: absolute; cursor: pointer;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: #444; transition: .4s; border-radius: 20px;
+}
+.slider:before {
+    position: absolute; content: "";
+    height: 14px; width: 14px; left: 3px; bottom: 3px;
+    background-color: white; transition: .4s; border-radius: 50%;
+}
+input:checked + .slider { background-color: #ff00ea; }
+input:checked + .slider:before { transform: translateX(20px); }
+
+.footer-col h5 {
+    color: var(--title-color); /* или --text-color */
+}
+
+/* Убираем рамку и фон конкретно у поля поиска */
+.search-field {
+    border: none !important;      /* Удаляем рамку */
+    outline: none !important;     /* Удаляем контур при клике */
+    background: transparent !important; /* Делаем фон прозрачным */
+    box-shadow: none !important;  /* Убираем любые тени */
+    padding: 10px;               /* Оставляем отступ для текста */
+    color: var(--text-color);     /* Цвет текста из темы */
+}
+
+/* Настраиваем сам овальный контейнер поиска */
+.search-wrapper {
+    background-color: var(--input-bg); /* Цвет фона из темы */
+    border: 2px solid var(--accent);   /* Наша неоновая рамка */
+    display: flex;
+    align-items: center;
+    padding-left: 15px;
+    transition: background-color 0.3s;
+}
+
